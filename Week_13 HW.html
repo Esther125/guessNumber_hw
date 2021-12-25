@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="Week_13.css">
+</head>
+<body>
+	<div class="all">
+		<br>
+		<h2>Guessing game</h2> <br>
+		<label id="guess">your guess(1-100)</label><br>
+        <input name = "name" type="text" class="input" id="input"><br><br>
+       	<input type="submit" value="play" class="botton" id="botton" onclick="show()"><br><br>
+       	
+     	<div class="result">
+     		<table class="table" align="center" id="table">
+     			<tr class="top"><th class="top">result</th></tr>
+				<tr><td id="new"></td></tr>
+			</table>
+		</div>
+    </div>
+
+    <script type="text/javascript">
+    	var enternum = document.getElementById('input');
+    	var num = parseInt(enternum);
+    	var answer = Math.floor(Math.random()*100+1);
+    	var myList = document.getElementById('table');
+    	var bon1 = 1;
+    	var bon2 = 100;
+
+    	
+
+    	function show(){
+    		
+    		if(enternum.value>answer){
+				var ans=document.createElement("tr");
+    			var anst=document.createTextNode(bon1+"-"+enternum.value);
+    			ans.appendChild(anst);
+				document.getElementById("table").appendChild(ans);
+				bon2 = enternum.value;
+			}
+
+			else if(enternum.value<answer){
+				var ans2=document.createElement("tr");
+	    		var anst2=document.createTextNode(enternum.value+"-"+bon2);
+	    		ans2.appendChild(anst2);
+				document.getElementById("table").appendChild(ans2);
+				bon1 = enternum.value;
+			}
+
+			else{
+				alert('BOMB!');
+			}
+    	}
+
+
+   
+
+
+
+    </script>
+</body>
+</html>
